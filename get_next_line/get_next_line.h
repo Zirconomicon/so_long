@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moturki <marvin@42lausanne.ch>             +#+  +:+       +#+        */
+/*   By: iduric <iduric@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:36:05 by moturki           #+#    #+#             */
-/*   Updated: 2023/10/31 12:48:31 by moturki          ###   ########.fr       */
+/*   Updated: 2024/09/02 22:02:24 by iduric           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ typedef struct s_list
 
 char	*get_next_line(int fd);
 
-int		ft_strlen(const char *str);
+int		ft_strlen2(const char *str);
 
-char	*ft_strjoin(char *s1, char s2);
+char	*ft_strjoin2(char *s1, char s2);
 
 int		init_info(t_list *info, int fd);
 

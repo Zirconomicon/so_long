@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moturki <marvin@42lausanne.ch>             +#+  +:+       +#+        */
+/*   By: iduric <iduric@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:21:35 by moturki           #+#    #+#             */
-/*   Updated: 2023/11/03 14:39:29 by moturki          ###   ########.fr       */
+/*   Updated: 2024/09/02 22:02:27 by iduric           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen(const char *str)
+int	ft_strlen2(const char *str)
 {
 	int	i;
 
@@ -24,13 +24,13 @@ int	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strjoin(char *s1, char s2)
+char	*ft_strjoin2(char *s1, char s2)
 {
 	int		len;
 	int		i;
 	char	*str;
 
-	len = ft_strlen(s1);
+	len = ft_strlen2(s1);
 	str = malloc(sizeof(char) * (len + 2));
 	if (!str)
 		return (NULL);

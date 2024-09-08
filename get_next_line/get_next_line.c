@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moturki <marvin@42lausanne.ch>             +#+  +:+       +#+        */
+/*   By: iduric <iduric@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:17:58 by moturki           #+#    #+#             */
-/*   Updated: 2023/10/31 10:21:25 by moturki          ###   ########.fr       */
+/*   Updated: 2024/09/02 22:02:17 by iduric           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ char	*get_next_line(int fd)
 	c = set_char(&info);
 	while (c)
 	{
-		str = ft_strjoin(str, c);
+		str = ft_strjoin2(str, c);
 		if (c == '\n')
 			return (str);
 		c = set_char(&info);
 	}
+	if (str != NULL && ft_strlen2(str) > 0)//
+		str[ft_strlen2(str)] = '\n'; //modification pour la fonction dim_check de test.c dans so_long. Cette ligne ne devrait pas exister de base.
 	return (str);
 }
