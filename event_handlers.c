@@ -27,8 +27,7 @@ void	move(t_game *game, int y, int x)
 		else if (game->map_cpy[y][x] == 'O')
 		{
 			ft_printf("GG!\n");
-			//mlx_clear_window(game->mlx, game->mlx_win);
-			mlx_destroy_window(game->mlx, game->mlx_win);
+			close_game(game);
 			exit(0);
 		}
 		game->map_cpy[y][x] = 'P';
@@ -51,7 +50,7 @@ int	manage_hook(int keycode, t_game *game)
 		move(game, game->p_co[0], game->p_co[1] + 1);
 	if (keycode == 53)
 	{
-		mlx_destroy_window(game->mlx, game->mlx_win);
+		close_game(game);
 		exit(0);
 	}
 	display_map(game);

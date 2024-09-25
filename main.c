@@ -36,6 +36,6 @@ int	main(int argc, char **argv)
 	mlx_hook(data.mlx_win, 2, 1L << 0, manage_hook, (void *)&data); //Here, "2" (KeyPress) is a constant that corresponds to the X11 event for a key press, and "1L << 0" (KeyPressMask) tells the system you want to listen for key press events.
 	mlx_mouse_hide();
 	mlx_loop(data.mlx);
-	free_map(&data, data.malloc_y);
+	free_map(&data, data.malloc_y); //ever useless?
 	return (0);
 }

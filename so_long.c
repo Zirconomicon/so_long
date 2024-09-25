@@ -82,3 +82,21 @@ void	display_map(t_game *game)
 		j++;
 	}
 }
+
+void	destruction_of_all_images(t_game *game)
+{
+	mlx_destroy_image(game->mlx, game->p_txt);
+	mlx_destroy_image(game->mlx, game->c_txt);
+	mlx_destroy_image(game->mlx, game->e_txt);
+	mlx_destroy_image(game->mlx, game->o_e_txt);
+	mlx_destroy_image(game->mlx, game->s_txt);
+	mlx_destroy_image(game->mlx, game->w_txt);
+}
+
+void	close_game(t_game *game)
+{
+	ft_printf("closing game...\n");
+	destruction_of_all_images(game);
+	mlx_destroy_window(game->mlx, game->mlx_win);
+	free_map(game, game->malloc_y);
+}

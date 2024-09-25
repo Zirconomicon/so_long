@@ -52,5 +52,7 @@ void	so_long_mlx_init(t_game *game);
 void	display_map(t_game *game);
 void	move(t_game *game, int y, int x);
 int		manage_hook(int keycode, t_game *game);
+void	destruction_of_all_images(t_game *game);
+void	close_game(t_game *game);
 
 #endif

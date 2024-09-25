@@ -37,12 +37,19 @@ int	dim_check(t_game *map_specs)
 	{
 		map_specs->map_y++;
 		if (ft_strlen(temp) - 1 != (size_t)map_specs->map_x)
+		{
+			free(temp);
 			return (1);
+		}
 		temp = get_next_line(map_specs->fd);
 	}
 	if (map_specs->map_y == map_specs->map_x || map_specs->map_y < 3
 		|| map_specs->map_x < 3)
+	{
+		free(temp);
 		return (1);
+	}
+	free(temp);
 	return (0);
 }
 
