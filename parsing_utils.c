@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-void	struct_init(t_testmap *map_specs)
+void	struct_init(t_game *map_specs)
 {
 	map_specs->map_cpy = NULL;
 	map_specs->set[0] = 0;
@@ -27,7 +27,7 @@ void	struct_init(t_testmap *map_specs)
 	map_specs->path = NULL;
 }
 
-int	dim_check(t_testmap *map_specs)
+int	dim_check(t_game *map_specs)
 {
 	char	*temp;
 
@@ -46,7 +46,7 @@ int	dim_check(t_testmap *map_specs)
 	return (0);
 }
 
-int	free_map(t_testmap *map_specs, int i)
+int	free_map(t_game *map_specs, int i)
 {
 	if (map_specs->map_cpy != NULL)
 	{
@@ -60,7 +60,7 @@ int	free_map(t_testmap *map_specs, int i)
 	return (0);
 }
 
-int	ft_error(t_testmap *map_specs, int code)
+int	ft_error(t_game *map_specs, int code)
 {
 	if (code == 0)
 		return (0);
@@ -86,7 +86,7 @@ int	ft_error(t_testmap *map_specs, int code)
 	return (1);
 }
 
-int	map_malloc(t_testmap *map_specs)
+int	map_malloc(t_game *map_specs)
 {
 	map_specs->malloc_y = 0;
 	map_specs->map_cpy = malloc(sizeof(char **) * (map_specs->map_y + 1));

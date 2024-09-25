@@ -1,28 +1,32 @@
-NAME = parsing
+NAME = so_long
 
-SRCS = parsing_utils.c parsing_utils_II.c main.c
+SRCS = main.c so_long.c parsing_utils.c parsing_utils_II.c map_parsing.c event_handlers.c
 
 OBJS = $(SRCS:.c=.o)
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra
- 
+LIB = libft/libft.a ft_printf/libftprintf.a get_next_line/get_next_line.a minilibx_opengl_20191021/libmlx.a
+
+PARAM = -framework OpenGL -framework AppKit
+
+CFLAGS = -Wall -Werror -Wextra -g3
+
 RM = rm -f
 
-all : $(NAME)
+all: $(NAME)
 
 $(NAME) : $(OBJS)
 	make -C get_next_line/
 	make -C ft_printf/
 	make -C libft/
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) get_next_line/get_next_line.a ft_printf/libftprintf.a libft/libft.a
-
+	make -C minilibx_opengl_20191021/
+	$(CC) $(CFLAGS) $(OBJS) $(LIB) $(PARAM) -o $(NAME)
 clean :
-	$(RM) $(OBJS) get_next_line/*.o ft_printf/*.o libft/*.o
+	$(RM) $(OBJS) get_next_line/*.o ft_printf/*.o libft/*.o minilibx_opengl_20191021/.o
 
 fclean : clean
-	$(RM) $(NAME) get_next_line/get_next_line.a ft_printf/libftprintf.a libft/libft.a
+	$(RM) $(NAME) get_next_line/get_next_line.a ft_printf/libftprintf.a libft/libft.a minilibx_opengl_20191021/libmlx.a
 
 re : fclean all
 

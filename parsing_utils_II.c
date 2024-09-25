@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-int	map_cpy(t_testmap *map_specs)
+int	map_cpy(t_game *map_specs)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ int	map_cpy(t_testmap *map_specs)
 	return (0);
 }
 
-int	char_counter(t_testmap *map_specs, int y, int x)
+int	char_counter(t_game *map_specs, int y, int x)
 {
 	if (map_specs->map_cpy[y][x] == 'P')
 	{
@@ -37,7 +37,11 @@ int	char_counter(t_testmap *map_specs, int y, int x)
 	else if (map_specs->map_cpy[y][x] == 'C')
 		map_specs->set[1]++;
 	else if (map_specs->map_cpy[y][x] == 'E')
+	{
+		map_specs->e_co[0] = y;
+		map_specs->e_co[1] = x;
 		map_specs->set[2]++;
+	}
 	else if (map_specs->map_cpy[y][x] == '0')
 		map_specs->set[3]++;
 	else if (map_specs->map_cpy[y][x] == '1')
@@ -47,7 +51,7 @@ int	char_counter(t_testmap *map_specs, int y, int x)
 	return (0);
 }
 
-int	wall_check(t_testmap *map_specs)
+int	wall_check(t_game *map_specs)
 {
 	int	x;
 	int	y;
@@ -74,7 +78,7 @@ int	wall_check(t_testmap *map_specs)
 	return (0);
 }
 
-int	path_checker(t_testmap *map_specs, int y, int x)
+int	path_checker(t_game *map_specs, int y, int x)
 {
 	int	i;
 
@@ -88,13 +92,13 @@ int	path_checker(t_testmap *map_specs, int y, int x)
 		return (1);
 	if (map_specs->map_cpy[y][x] == '0')
 		map_specs->map_cpy[y][x] = 'X';
+	if (map_specs->map_cpy[y][x] == 'P')
+		map_specs->map_cpy[y][x] = 'H';
 	if (map_specs->map_cpy[y][x] == 'C')
 	{
 		map_specs->set[1]--;
 		map_specs->map_cpy[y][x] = 'A';
 	}
-	if (map_specs->map_cpy[y][x] == 'P')
-		map_specs->map_cpy[y][x] = 'H';
 	i += path_checker(map_specs, y, x + 1);
 	i += path_checker(map_specs, y, x - 1);
 	i += path_checker(map_specs, y + 1, x);
@@ -102,7 +106,7 @@ int	path_checker(t_testmap *map_specs, int y, int x)
 	return (i);
 }
 
-void	setback_chars(t_testmap *map_specs, int y, int x)
+void	setback_chars(t_game *map_specs, int y, int x)
 {
 	while (y < map_specs->map_y)
 	{
@@ -111,7 +115,10 @@ void	setback_chars(t_testmap *map_specs, int y, int x)
 			if (map_specs->map_cpy[y][x] == 'X')
 				map_specs->map_cpy[y][x] = '0';
 			if (map_specs->map_cpy[y][x] == 'A')
+			{
+				map_specs->set[1]++;
 				map_specs->map_cpy[y][x] = 'C';
+			}
 			if (map_specs->map_cpy[y][x] == 'H')
 				map_specs->map_cpy[y][x] = 'P';
 			x++;
